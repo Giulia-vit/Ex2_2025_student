@@ -25,7 +25,6 @@ private:
   double T;
   double I;
 
-
   double thetadot_demi_pas;
   ofstream *outputFile;
 
@@ -68,15 +67,11 @@ private:
               theta += 2 * M_PI;
           }
       }
-
-
-
   double thetadot_demi     = thetadot + 0.5*dt*(a[0] + a[1]);
 
   valarray<double> new_a = acceleration(theta,thetadot_demi, t+dt);
   valarray<double> new_a_demi = acceleration(theta,thetadot_demi, t+0.5*dt);
   thetadot = thetadot + 0.5*(a[0] + new_a[0])*dt + new_a_demi[1]*dt;
-
 }
     
 
@@ -109,7 +104,7 @@ public:
   Exercice2(int argc, char* argv[])
   {
     const double pi=3.1415926535897932384626433832795028841971e0;
-    string inputPath("configuration.in"); // Fichier d'input par defaut
+    string inputPath("configuration.in.example"); // Fichier d'input par defaut
     if(argc>1) // Fichier d'input specifie par l'utilisateur ("./Exercice2 config_perso.in")
       inputPath = argv[1];
 
@@ -131,6 +126,12 @@ public:
     N_excit  = configFile.get<int>("N_excit");      // number of periods of excitation
     Nperiod  = configFile.get<int>("Nperiod");      // number of periods of oscillation of the eigenmode
     nsteps_per= configFile.get<int>("nsteps");      // number of time step per period
+
+    // Variables pour définir les conditions initiales du problème
+    double I = m*L*L/12;
+    om_0 = sqrt(mu*B0/I);
+    Omega = 2*om_0;
+    cout << "Value Omega :"<< Omega << endl;
 
     // Ouverture du fichier de sortie
     outputFile = new ofstream(configFile.get<string>("output").c_str());
@@ -156,6 +157,16 @@ public:
     cout << "final time is "<<"  "<< tFin << endl; 
 
   }
+
+    void sol_analytique()
+  {
+    double theta0 = 1e-6;
+    double theta_fin = theta0 * cos(om_0*tFin);
+    double thetaDot_fin = - theta0 * om_0 * sin(om_0*tFin);
+    cout << "Solution analytique position : " << theta_fin << endl;
+    cout << "Solution analytique vitesse : " << thetaDot_fin << endl;
+    cout << "omega_0 :" << om_0 << endl;
+  };
   
 
   ~Exercice2()
@@ -185,6 +196,6 @@ int main(int argc, char* argv[])
 {
   Exercice2 engine(argc, argv);
   engine.run();
-
+  engine.sol_analytique();
   return 0;
 }
