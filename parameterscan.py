@@ -51,7 +51,7 @@ for nstep in nsteps :
         theta = data[:,1] # Position
         theta_dot = data[:, 2]  # Speed
         E = data[:, 3] # Energie mécanique du système
-        Pnc = data[:, 4] # Puissance des forces non-conservatives
+        P_nc = data[:, 4] # Puissance des forces non-conservatives
         convergence_list_pos.append(theta[-1])
         convergence_list_speed.append(theta_dot[-1])
 
@@ -92,9 +92,10 @@ for nstep in nsteps :
     d_E.append(0)
 
     fig, ax3 = plt.subplots(constrained_layout=True)
-    ax3.plot(t, d_E, label='Derivative energy', color=color1, linewidth=lw)
+    ax3.plot(t, d_E, label=r"$\frac{dE}{dt}$", color='red', linewidth=lw)
+    ax3.plot(t, P_nc, label=r'$P_{\text{nc}}$', color='grey', linewidth=lw)
     ax3.set_xlabel('Temps [s]', fontsize=fs)
-    ax3.set_ylabel("Dérivée de l'énergie [unità]", fontsize=fs)
+    ax3.set_ylabel("Grandeur", fontsize=fs)
     ax3.set_title(f'nstep={nstep}')
     ax3.legend(fontsize=fs)
     ax3.grid(True)
