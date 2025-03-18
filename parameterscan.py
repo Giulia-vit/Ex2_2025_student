@@ -140,103 +140,103 @@ ax3.set_title(f'nstep={nstep}')
 ax3.legend(fontsize=fs)
 ax3.grid(True)
 
-# d_x = [om_0**2*(x - th_pos_B)**2 for x in convergence_list_pos]
-# d_v = [(x - th_speed_B)**2 for x in convergence_list_speed]
-# error = [np.sqrt(x+y) for x, y in zip(d_x, d_v)]
-# print("Error = ", error)
-#
-# dt_new = []
-# dt_new.append(dt[0])
-# dt_new.append(dt[-1])
-#
-# error_new = []
-# error_new.append(error[0])
-# error_new.append(error[-1])
-#
-# ax9.loglog(dt, error, marker='+', label=rf"Convergence d'ordre 2", color='fuchsia', linestyle='--')
-# # ax9.loglog(dt, error, marker='+', label=rf"Convergence d'ordre 2", color='mediumorchid', linestyle='none')
-# ax9.set_xlabel(rf'$\Delta \, t$ [s]', fontsize=fs)
-# ax9.set_ylabel(r"$\delta$ au temps $t_{fin}$", fontsize=fs)
-# ax9.tick_params(axis="both", labelsize=15)
-# ax9.set_ylim(ymin=5.812e-3, ymax=5.815e-3)
-# ax9.legend(fontsize=fs)
-# ax9.grid(True)
+d_x = [om_0**2*(x - th_pos_B)**2 for x in convergence_list_pos]
+d_v = [(x - th_speed_B)**2 for x in convergence_list_speed]
+error = [np.sqrt(x+y) for x, y in zip(d_x, d_v)]
+print("Error = ", error)
 
-# d_x = [om_0**2*(x - th_pos_B)**2 for x in convergence_list_pos]
-# d_v = [(x - th_speed_B)**2 for x in convergence_list_speed]
-# error = [np.sqrt(x+y) for x, y in zip(d_x, d_v)]
-# print("Error = ", error)
-#
-# dt_new = []
-# dt_new.append(dt[0])
-# dt_new.append(dt[-1])
-#
-# error_new = []
-# error_new.append(error[0])
-# error_new.append(error[-1])
-#
-# ax9.loglog(dt, error, marker='+', label=rf"Convergence d'ordre 2", color='fuchsia', linestyle='--')
-# # ax9.loglog(dt, error, marker='+', label=rf"Convergence d'ordre 2", color='mediumorchid', linestyle='none')
-# ax9.set_xlabel(rf'$\Delta \, t$ [s]', fontsize=fs)
-# ax9.set_ylabel(r"$\delta$ au temps $t_{fin}$", fontsize=fs)
-# ax9.tick_params(axis="both", labelsize=15)
-# ax9.set_ylim(ymin=5.812e-3, ymax=5.815e-3)
-# ax9.legend(fontsize=fs)
-# ax9.grid(True)
-#
-# dt_new = []
-# dt_new.append(dt[0])
-# dt_new.append(dt[-1])
-#
-# dx_new = []
-# dx_new.append(d_x[0])
-# dx_new.append(d_x[-1])
-# fig, ax4 = plt.subplots(constrained_layout=True)
-# # Graphe log-log représentant l'erreur sur la positon finale en fonction du temps
-# ax4.loglog(dt_new, dx_new, marker='+', label=rf"Convergence d'ordre 2", color='mediumorchid', linestyle='--')
-# ax4.loglog(dt, d_x, marker='+', color='mediumorchid', linestyle='none')
-# ax4.set_xlabel(rf'$\Delta \, t$ [s]', fontsize=fs)
-# ax4.set_ylabel(r"Erreur numérique au temps $t_{fin}$", fontsize=fs)
-# ax4.tick_params(axis="both", labelsize=15)
-# ax4.legend(fontsize=fs)
-# ax4.set_ylim(ymin=1e-20, ymax=1e-6)
-# ax4.grid(True)
+dt_new = []
+dt_new.append(dt[0])
+dt_new.append(dt[-1])
 
-# fig, ax6 = plt.subplots(constrained_layout=True)
-# # Regression linéaire pour évaluer dans la suite la valeur convergée
-# d_lim = np.linspace(0, max(tn), 10)
-# result = stats.linregress(tn, convergence_list_pos)
-# a, b = result.slope, result.intercept
-# fit = a*d_lim + b
-#
-# # Graphique lin-lin pour évaluer l'ordre de convergence
-# ax6.plot(d_lim, fit, linestyle='--', color=color1)
-# ax6.scatter(tn, convergence_list_pos, marker='+', label=rf'norder = {norder}', color='mediumorchid')
-# ax6.set_xlim(xmin=0)
-# ax6.set_xlabel(rf'$(\Delta \, t)^{norder}$ [s]', fontsize=fs)
-# ax6.set_ylabel(r"Position finale $\theta$", fontsize=fs)
-# #ax6.set_ylim(ymin=-1.53e-4, ymax=-1.545e-4)
-# ax6.tick_params(axis="both", labelsize=15)
-# ax6.legend(fontsize=fs)
-# ax6.grid(True)
-#
-#
-# fig, ax10 = plt.subplots(constrained_layout=True)
-# # Regression linéaire pour évaluer dans la suite la valeur convergée
-# d_lim = np.linspace(0, max(tn), 10)
-# result = stats.linregress(tn, convergence_list_pos)
-# a, b = result.slope, result.intercept
-# fit = a*d_lim + b
-#
-# # Graphique lin-lin pour évaluer l'ordre de convergence
-# ax10.plot(d_lim, fit, linestyle='--', color=color1)
-# ax10.scatter(tn, convergence_list_speed, marker='+', label=rf'norder = {norder}', color='mediumorchid')
-# ax10.set_xlim(xmin=0)
-# ax10.set_xlabel(rf'$(\Delta \, t)^{norder}$ [s]', fontsize=fs)
-# ax10.set_ylabel(r"Rotation finale $\theta$", fontsize=fs)
-# #ax6.set_ylim(ymin=-1.53e-4, ymax=-1.545e-4)
-# ax10.tick_params(axis="both", labelsize=15)
-# ax10.legend(fontsize=fs)
-# ax10.grid(True)
+error_new = []
+error_new.append(error[0])
+error_new.append(error[-1])
+
+ax9.loglog(dt, error, marker='+', label=rf"Convergence d'ordre 2", color='fuchsia', linestyle='--')
+# ax9.loglog(dt, error, marker='+', label=rf"Convergence d'ordre 2", color='mediumorchid', linestyle='none')
+ax9.set_xlabel(rf'$\Delta \, t$ [s]', fontsize=fs)
+ax9.set_ylabel(r"$\delta$ au temps $t_{fin}$", fontsize=fs)
+ax9.tick_params(axis="both", labelsize=15)
+ax9.set_ylim(ymin=5.812e-3, ymax=5.815e-3)
+ax9.legend(fontsize=fs)
+ax9.grid(True)
+
+d_x = [om_0**2*(x - th_pos_B)**2 for x in convergence_list_pos]
+d_v = [(x - th_speed_B)**2 for x in convergence_list_speed]
+error = [np.sqrt(x+y) for x, y in zip(d_x, d_v)]
+print("Error = ", error)
+
+dt_new = []
+dt_new.append(dt[0])
+dt_new.append(dt[-1])
+
+error_new = []
+error_new.append(error[0])
+error_new.append(error[-1])
+
+ax9.loglog(dt, error, marker='+', label=rf"Convergence d'ordre 2", color='fuchsia', linestyle='--')
+# ax9.loglog(dt, error, marker='+', label=rf"Convergence d'ordre 2", color='mediumorchid', linestyle='none')
+ax9.set_xlabel(rf'$\Delta \, t$ [s]', fontsize=fs)
+ax9.set_ylabel(r"$\delta$ au temps $t_{fin}$", fontsize=fs)
+ax9.tick_params(axis="both", labelsize=15)
+ax9.set_ylim(ymin=5.812e-3, ymax=5.815e-3)
+ax9.legend(fontsize=fs)
+ax9.grid(True)
+
+dt_new = []
+dt_new.append(dt[0])
+dt_new.append(dt[-1])
+
+dx_new = []
+dx_new.append(d_x[0])
+dx_new.append(d_x[-1])
+fig, ax4 = plt.subplots(constrained_layout=True)
+# Graphe log-log représentant l'erreur sur la positon finale en fonction du temps
+ax4.loglog(dt_new, dx_new, marker='+', label=rf"Convergence d'ordre 2", color='mediumorchid', linestyle='--')
+ax4.loglog(dt, d_x, marker='+', color='mediumorchid', linestyle='none')
+ax4.set_xlabel(rf'$\Delta \, t$ [s]', fontsize=fs)
+ax4.set_ylabel(r"Erreur numérique au temps $t_{fin}$", fontsize=fs)
+ax4.tick_params(axis="both", labelsize=15)
+ax4.legend(fontsize=fs)
+ax4.set_ylim(ymin=1e-20, ymax=1e-6)
+ax4.grid(True)
+
+fig, ax6 = plt.subplots(constrained_layout=True)
+# Regression linéaire pour évaluer dans la suite la valeur convergée
+d_lim = np.linspace(0, max(tn), 10)
+result = stats.linregress(tn, convergence_list_pos)
+a, b = result.slope, result.intercept
+fit = a*d_lim + b
+
+# Graphique lin-lin pour évaluer l'ordre de convergence
+ax6.plot(d_lim, fit, linestyle='--', color=color1)
+ax6.scatter(tn, convergence_list_pos, marker='+', label=rf'norder = {norder}', color='mediumorchid')
+ax6.set_xlim(xmin=0)
+ax6.set_xlabel(rf'$(\Delta \, t)^{norder}$ [s]', fontsize=fs)
+ax6.set_ylabel(r"Position finale $\theta$", fontsize=fs)
+#ax6.set_ylim(ymin=-1.53e-4, ymax=-1.545e-4)
+ax6.tick_params(axis="both", labelsize=15)
+ax6.legend(fontsize=fs)
+ax6.grid(True)
+
+
+fig, ax10 = plt.subplots(constrained_layout=True)
+# Regression linéaire pour évaluer dans la suite la valeur convergée
+d_lim = np.linspace(0, max(tn), 10)
+result = stats.linregress(tn, convergence_list_pos)
+a, b = result.slope, result.intercept
+fit = a*d_lim + b
+
+# Graphique lin-lin pour évaluer l'ordre de convergence
+ax10.plot(d_lim, fit, linestyle='--', color=color1)
+ax10.scatter(tn, convergence_list_speed, marker='+', label=rf'norder = {norder}', color='mediumorchid')
+ax10.set_xlim(xmin=0)
+ax10.set_xlabel(rf'$(\Delta \, t)^{norder}$ [s]', fontsize=fs)
+ax10.set_ylabel(r"Rotation finale $\theta$", fontsize=fs)
+#ax6.set_ylim(ymin=-1.53e-4, ymax=-1.545e-4)
+ax10.tick_params(axis="both", labelsize=15)
+ax10.legend(fontsize=fs)
+ax10.grid(True)
 
 plt.show()

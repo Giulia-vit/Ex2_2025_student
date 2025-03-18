@@ -5,7 +5,7 @@ import os
 from scipy import stats
 
 # Parameters
-executable = './Exercice2_Giulia'  # Nome dell'eseguibile
+executable = './Ex2_2025_student'  # Nome dell'eseguibile
 repertoire = r"/home/nhb/python/python-schemdraw/Physique-Numerique/Ex2_2025_student"
 os.chdir(repertoire)
 
